@@ -13,5 +13,5 @@ RUN npm install -g npm@8.9.0
 
 # Copy the content of the local src directory to the working directory
 COPY . /app       
-EXPOSE 4200
+EXPOSE 3030
 CMD ["npm", "run", "start"]
