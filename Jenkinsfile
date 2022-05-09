@@ -15,6 +15,11 @@ pipeline {
                 sh 'docker push lakshmiswarna041/jenkins-demo-app:$BUILD_NUMBER'      
                 }
             }
+        }
+	stage('deploy') {
+            steps {
+                sh 'docker run -it -d -p 3030:3030 lakshmiswarna041/jenkins-demo-app'
+            }
         }     
     }
 }
