@@ -18,7 +18,7 @@ pipeline {
         }
 	stage('deploy') {
             steps {
-                sh 'docker run -it -d -p 3030:3030 lakshmiswarna041/jenkins-demo-app'
+                sh 'docker run -it -d -p 8001:3030 lakshmiswarna041/jenkins-demo-app'
             }
         }     
     }
