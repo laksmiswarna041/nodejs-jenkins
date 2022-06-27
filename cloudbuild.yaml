@@ -1,0 +1,25 @@
+steps:
+  #clone from github
+  - name: 'gcr.io/cloud-builders/git'
+    args:
+      - 'clone'
+      - 'https://source.developers.google.com/p/caramel-core-354108/r/github_laksmiswarna041_nodejs-jenkins'
+
+  #build image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'  
+      - 'gcr.io/caramel-core-354108/nginx-4:latest'
+      - '.'
+  #push the image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'set'
+      - 'image'
+      - 'deployment/devDeployment'
+      - 'devDeployment=gcr.io/caramel-core-354108/nginx-4:latest'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=swarna-cluster'
+  
